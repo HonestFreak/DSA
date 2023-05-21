@@ -5,7 +5,7 @@ int main(){
     stack<int> s;
     s.push(3);
     s.push(10);
-    s.push(14);
+    s.push(22);
     s.push(23);
 
     cout<<s.top()<<endl;
