@@ -6,7 +6,7 @@ int main(){
     s.push(3);
     s.push(10);
     s.push(14);
-    s.push(34);
+    s.push(23);
 
     cout<<s.top()<<endl;
     cout<<s.size()<<endl;
