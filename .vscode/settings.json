@@ -1,0 +1,14 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "xstddef": "cpp",
+        "queue": "cpp",
+        "iostream": "cpp",
+        "cstdlib": "cpp",
+        "utility": "cpp",
+        "unordered_map": "cpp",
+        "list": "cpp",
+        "ostream": "cpp",
+        "stack": "cpp"
+    }
+}
