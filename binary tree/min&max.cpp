@@ -1,4 +1,5 @@
-#include<iostream>
+#include <iostream>
+
 using namespace std;
 
 class node {
@@ -29,22 +30,25 @@ node* buildTree(){
     return root;
 }
 
-// search a tree for a given key
-node* treesearch(node* root,int k){
-    if(root==NULL || root->data==k){
-        return root;
+//finding minimum element in a binary tree
+int min(node* root){
+    while( root->left != NULL){
+        root = root->left;
     }
-    if(root->data >k){
-        return treesearch(root->left,k);
-    }
-    else return treesearch(root->right,k);
+    return root->data; 
 }
 
-int main()
-{
+//finding maximum element in a binary tree
+int max(node* root){
+    while( root->right != NULL){
+        root = root->right;
+    }
+    return root->data; 
+}
+
+int main(){
     node* root = NULL;
     root = buildTree();
-    int k = 5;
-    node* x = treesearch(root,k);
-    return 0;
+    cout<< min(root)<<endl;
+    cout<< max(root);
 }
