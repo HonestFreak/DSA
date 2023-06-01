@@ -61,10 +61,33 @@ void postorder(node* root){
     cout<< root->data << " ";
 }
 
+// zigzag traversal
+void zigzag(node* root){
+    bool ltr = true;
+    queue<node*> q;
+    q.push(root);
+    while(!q.empty()){
+        node* f = q.front();
+        cout<< f->data << " ";
+        q.pop();
+
+        if(ltr){
+            if(f->left) q.push(f->left);
+            if(f->right)q.push(f->right);
+        }
+        else {
+            if(f->right) q.push(f->right);
+            if(f->left)q.push(f->left);
+        }
+        ltr = !ltr;
+    }
+}  
+
+
 int main(){
     node* root = NULL;
     root = buildTree();
-    cout<<"lever oder:";
+    cout<<"level oder:";
     levelOrderTraversal(root);
     cout<<endl<<"inorder:";
     inorder(root);
@@ -72,5 +95,7 @@ int main(){
     preorder(root);
     cout<<endl<<"postorder:";
     postorder(root);
+    cout<<endl<<"testorder:";
+    zigzag(root);
  return 0;
 }
