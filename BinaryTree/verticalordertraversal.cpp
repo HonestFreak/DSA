@@ -36,26 +36,28 @@ node* buildTree() {
 
 // vertical order traversal of a binary tree
 vector<int> verticalOrder(node* root) {
-    map<int, map<int, vector<int>>> nodes;
+    map<int, map<int, vector<int>>> nodes;      // map( HD , map( level , nodes on this lvl and hd))
     queue<pair<node*, pair<int, int>>> q;
     vector<int> ans;
+
+    // keeping nodes as map sorts itself 
 
     if (root == NULL) {
         return ans;
     }
 
-    q.push(make_pair(root, make_pair(0, 0)));
+    q.push(make_pair(root, make_pair(0, 0)));       // (root node , (hd = 0 , level = 0 ))
 
     while (!q.empty()) {
-        pair<node*, pair<int, int>> temp = q.front();
+        pair<node*, pair<int, int>> temp = q.front();   // temp stores the last node and its hd and level
         q.pop();
         node* frontnode = temp.first;
         int hd = temp.second.first;
         int lvl = temp.second.second;
 
-        nodes[hd][lvl].push_back(frontnode->data);
+        nodes[hd][lvl].push_back(frontnode->data);      // stores the nodes for each specific hd and lvl
 
-        if (frontnode->left)
+        if (frontnode->left)                            
             q.push(make_pair(frontnode->left, make_pair(hd - 1, lvl + 1)));
 
         if (frontnode->right)
