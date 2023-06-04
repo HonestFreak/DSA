@@ -35,6 +35,7 @@ node* solve(node* root, int &k, int node1){
     if(root==NULL)  return NULL;
     if(root->data == node1) return root;
 
+    //traversing the tree
     node* leftans = solve(root->left, k , node1);
     node* rightans = solve(root->right,k , node1);
 
@@ -66,6 +67,6 @@ int main(){
     int k ; int node1;
     cin>>k>>node1;
     node* ans = solve(root,k,node1);
-    if(ans==NULL)   cout<<-1;
+    if(ans==NULL || ans->data==node1)   cout<<-1;
     else cout<<ans->data;
 }
