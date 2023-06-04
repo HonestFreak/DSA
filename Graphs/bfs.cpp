@@ -68,7 +68,7 @@ int main() {
   g.addEdge(2, 3);
   g.addEdge(3, 3);
 
-  g.BFS(2);
+  g.BFS(1);
 
   return 0;
 }
