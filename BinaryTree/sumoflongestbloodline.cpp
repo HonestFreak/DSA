@@ -37,9 +37,7 @@ void sumtree(node* root, int sum, int len, int& maxsum, int& maxlen) {
             maxlen = len;
             maxsum = sum;
         }
-        else if (len == maxlen) {
-            maxsum = max(sum, maxsum);
-        }
+        else if (len == maxlen)  maxsum = max(sum, maxsum);
         return;
     }
     sum = sum + root->data;

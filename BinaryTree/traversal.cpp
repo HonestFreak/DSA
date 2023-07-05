@@ -95,7 +95,7 @@ int main(){
     preorder(root);
     cout<<endl<<"postorder:";
     postorder(root);
-    cout<<endl<<"testorder:";
+    cout<<endl<<"zigzag:";
     zigzag(root);
  return 0;
 }

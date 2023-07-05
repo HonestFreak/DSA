@@ -40,6 +40,8 @@ pair<int,int> diameter_optimized(node* root){
         p.first = p.second = 0;
         return p;
     }
+
+    // needs diameter and height both , so let's pass them in pairs
     pair<int,int> left = diameter_optimized(root->left);
     pair<int,int> right = diameter_optimized(root->right);
 
