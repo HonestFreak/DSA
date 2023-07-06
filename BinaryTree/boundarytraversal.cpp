@@ -35,9 +35,7 @@ void lefttraversal(node* root, vector<int> &ans){
     if(root==NULL || (root->left==NULL && root->right==NULL))
         return ;
     ans.push_back(root->data);    
-    if(root->left->data != NULL)
     lefttraversal(root->left, ans);
-    else
     lefttraversal(root->right, ans);
 }
 
