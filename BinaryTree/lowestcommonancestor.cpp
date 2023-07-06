@@ -32,12 +32,8 @@ node* buildTree(){
 
 // lowest common ancestor
 node* lca(node* root, int node1, int node2){
-    if(root == NULL){
-        return NULL;
-    }
-    if(root->data == node1 || root->data == node2){
-        return root;
-    }
+    if(root == NULL) return NULL;
+    if(root->data == node1 || root->data == node2) return root;
 
     node *leftans = lca(root->left, node1, node2);
     node *rightans = lca(root->right, node1, node2);
