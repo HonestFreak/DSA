@@ -34,7 +34,7 @@ node* buildTree() {
     return root;
 }
 
-// top view of a binary tree
+// right view of a binary tree
 vector<int> rightview(node* root) {
     vector<int> ans;
     if(root == NULL){
