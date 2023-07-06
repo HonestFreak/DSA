@@ -40,8 +40,8 @@ vector<int> rightview(node* root) {
     if(root == NULL){
         return ans;
     }
-    map<int,int> topNode;   // singular mapping , each lvl will have just one value i.e. leftmost node data
-    // map< leftmost node , lvl >
+    map<int,int> topNode;   // singular mapping , each lvl will have just one value i.e. rightmost node data
+    // map< rightmost node , lvl >
     queue<pair<node* , int>> q;
     q.push(make_pair(root,0));
 
@@ -50,7 +50,6 @@ vector<int> rightview(node* root) {
         q.pop();
         node* frontNode = temp.first;
         int lvl= temp.second;
-        
        
         topNode[lvl] = frontNode->data;      
 
