@@ -41,8 +41,8 @@ void sumtree(node* root, int sum, int len, int& maxsum, int& maxlen) {
         return;
     }
     sum = sum + root->data;
-    sumtree(root->left, sum, len + 1, maxsum, maxlen); // Fixed order of parameters
-    sumtree(root->right, sum, len + 1, maxsum, maxlen); // Fixed order of parameters
+    sumtree(root->left, sum, len + 1, maxsum, maxlen); 
+    sumtree(root->right, sum, len + 1, maxsum, maxlen); 
 }
 
 int sumoflongest(node* root) {
