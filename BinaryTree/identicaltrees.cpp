@@ -34,8 +34,8 @@ bool identicaltree(node* root1, node* root2){
     bool right = identicaltree(root1->right, root2->right);
     bool val = (root1->data == root2->data);
 
-    if(left && right && val) return true;
-    else return false;
+    return (left && right && val);
+
 }
 
 int main()
