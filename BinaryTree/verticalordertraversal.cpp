@@ -42,9 +42,7 @@ vector<int> verticalOrder(node* root) {
 
     // keeping nodes as map sorts itself 
 
-    if (root == NULL) {
-        return ans;
-    }
+    if (root == NULL) return ans;
 
     q.push(make_pair(root, make_pair(0, 0)));       // (root node , (hd = 0 , level = 0 ))
 
@@ -57,11 +55,8 @@ vector<int> verticalOrder(node* root) {
 
         nodes[hd][lvl].push_back(frontnode->data);      // stores the nodes for each specific hd and lvl
 
-        if (frontnode->left)                            
-            q.push(make_pair(frontnode->left, make_pair(hd - 1, lvl + 1)));
-
-        if (frontnode->right)
-            q.push(make_pair(frontnode->right, make_pair(hd + 1, lvl + 1)));
+        if (frontnode->left) q.push(make_pair(frontnode->left, make_pair(hd - 1, lvl + 1)));
+        if (frontnode->right) q.push(make_pair(frontnode->right, make_pair(hd + 1, lvl + 1)));
     }
 
     // Retrieve elements from the map in vertical order
