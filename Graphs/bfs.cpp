@@ -1,74 +1,52 @@
-// BFS algorithm in C++
-// queue is used for bfs
-#include <iostream>
-#include <list>
+#include<iostream>
+#include<vector>
 
 using namespace std;
 
-class Graph {
+class Graph{
   int numVertices;
-  list<int>* adjLists;
+  vector<int>* adjLists;
   bool* visited;
 
-   public:
-  Graph(int vertices);
-  void addEdge(int src, int dest);
-  void BFS(int startVertex);
-};
+  public:
+  Graph(int vertices){
+    numVertices = vertices;
+    adjLists = new vector<int>[vertices];
+  }
 
-// Create a graph with given vertices,
-// and maintain an adjacency list
-Graph::Graph(int vertices) {
-  numVertices = vertices;
-  adjLists = new list<int>[vertices];
-}
+  void addEdge(int src, int dest){
+    adjLists[src].push_back(dest);
+    adjLists[dest].push_back(src);
+  }
 
-// Add edges to the graph
-void Graph::addEdge(int src, int dest) {
-  adjLists[src].push_back(dest);
-  adjLists[dest].push_back(src);
-}
+  void BFS(int StartVertex){
+    vector<bool> visited(numVertices, false);
+    vector<int> queue;
+    
+    while(!queue.empty()){
+      int curvertex = queue.front();
+      cout<<"visited" << curvertex<<endl;
+      queue.pop_front();
 
-// BFS algorithm
-void Graph::BFS(int startVertex) {
-  visited = new bool[numVertices];          // boolean array representing visited vertices
-  for (int i = 0; i < numVertices; i++)
-    visited[i] = false;                     // setting visited to false for all vertices
-
-  list<int> queue;
-
-  visited[startVertex] = true;              // start vertex is visited
-  queue.push_back(startVertex);
-
-  list<int>::iterator i;
-
-  while (!queue.empty()) {
-    int currVertex = queue.front();
-    cout << "Visited " << currVertex <<endl;
-    queue.pop_front();                      // poping visited vertex from queue
-
-    // iterating all conections of the current vertex
-    for (i = adjLists[currVertex].begin(); i != adjLists[currVertex].end(); i++) { 
-        // i is pointer (address) , to get the value at i : *i
-      int adjVertex = *i; 
-      if (!visited[adjVertex]) {
-        visited[adjVertex] = true;
-        queue.push_back(adjVertex);
+      for(auto i=adjLists[curvertex].begin(); i!=adjLists[curvertex].end(); i++){
+        int adjVertex = *i;
+        if(!visited[adjVertex]){
+          visited[adjVertex]=true;
+          queue.push_back(adjVertex);
+        }
       }
     }
   }
 }
 
-int main() {
+int main()
+{
   Graph g(4);
-  g.addEdge(0, 1);
-  g.addEdge(0, 2);
-  g.addEdge(1, 2);
-  g.addEdge(2, 0);
-  g.addEdge(2, 3);
-  g.addEdge(3, 3);
-
-  g.BFS(1);
-
-  return 0;
+  g.addEdge(0,1);
+  g.addEdge(0,2);
+  g.addEdge(1,2);
+  g.addEdge(2,0);
+  g.addEdge(2,3);
+  g.addEdge(3,3);
+ return 0;
 }
