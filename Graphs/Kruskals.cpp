@@ -49,6 +49,7 @@ int Graph::find_set(int i) {
 void Graph::union_set(int u, int v) {
   parent[u] = parent[v];
 }
+
 void Graph::kruskal() {
   int i, uRep, vRep;
   sort(G.begin(), G.end());  // increasing weight
