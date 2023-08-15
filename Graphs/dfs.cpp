@@ -1,44 +1,39 @@
-// DFS algorithm in C++
-// recursion
-#include <iostream>
-#include <list>
+#include<iostream>
+#include<vector>
 using namespace std;
 
 class Graph {
   int numVertices;
-  list<int> *adjLists;
+  vector<int> *adjLists;
   bool *visited;
 
-   public:
-  Graph(int V);
-  void addEdge(int src, int dest);
-  void DFS(int vertex);
+public:
+  Graph(int v) {
+    numVertices = v;
+    adjLists = new vector<int>[v];
+    visited = new bool[v];
+    for (int i = 0; i < v; i++) {
+      visited[i] = false;
+    }
+  }
+
+  void addEdge(int u, int v) {
+    adjLists[u].push_back(v);
+    adjLists[v].push_back(u);
+  }
+
+  void DFS(int startVertex) {
+    visited[startVertex] = true;
+    cout << startVertex << " ";
+
+    vector<int> adjList = adjLists[startVertex];
+    for (auto i = adjList.begin(); i != adjList.end(); i++) {
+      if (!visited[*i]) {
+        DFS(*i);
+      }
+    }
+  }
 };
-
-// Initialize graph
-Graph::Graph(int vertices) {
-  numVertices = vertices;
-  adjLists = new list<int>[vertices];
-  visited = new bool[vertices];
-}
-
-// Add edges
-void Graph::addEdge(int src, int dest) {
-  adjLists[src].push_front(dest);
-}
-
-// DFS algorithm
-void Graph::DFS(int vertex) {
-  visited[vertex] = true;
-  list<int> adjList = adjLists[vertex];
-
-  cout << vertex << " ";
-
-  list<int>::iterator i;
-  for (i = adjList.begin(); i != adjList.end(); ++i)    // iterating over all adjoint vertices
-    if (!visited[*i])               // recursion for non-visited vertices
-      DFS(*i);
-}
 
 int main() {
   Graph g(4);
@@ -48,6 +43,5 @@ int main() {
   g.addEdge(2, 3);
 
   g.DFS(0);
-
   return 0;
 }
