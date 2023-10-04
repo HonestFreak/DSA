@@ -40,7 +40,7 @@ vector<int> topview(node* root) {
     if(root == NULL){
         return ans;
     }
-    map<int,int> topNode;   // singular mapping , each hd will have just one value i.e. top node data
+    map<int,int> topNode;   // jsingular mapping , each hd will have just one value i.e. top node data
     // map< top node , hd >
     queue<pair<node* , int>> q;
     q.push(make_pair(root,0));
@@ -48,7 +48,7 @@ vector<int> topview(node* root) {
     while(!q.empty()){
         pair<node* , int> temp = q.front();
         q.pop();
-        node* frontNode = temp.first;
+        node* frontNode = temp.first; 
         int hd= temp.second;
         
         // if value is already present then do nothing
